@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        body {
+             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./img/foto.png');
+            background-repeat: no-repeat;
+            background-position: 100% center;
+            background-size: cover;
+            background-attachment: fixed;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+         @media (min-width: 768px) {
+            body {
+                background-image: url('./img/foto.png') !important;
+                background-position: center;
+                padding-right: 30%; 
+            }
+        }
+
+        h1 {
+            font-family: fantasy;
+            background: linear-gradient(to left, #ffffff, #ff9a9e, #fad0c4, #a1c4fd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+        #mensaje {
+            color: red;
+            font-weight: bold;
+            min-height: 1.2em;
+        }
+    </style>
+    <title>JS- 7.3</title>
+</head>
+<body class="p-4 md:pr-[30%]">
+
+    <h1 class="text-5xl sm:text-7xl md:text-8xl lg:text-[100px] text-center my-6">
+        LISTA DE COMPRAS
+    </h1>
+
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between w-full max-w-[900px] gap-4 my-4">
+        <label for="producto-input" class="text-lg text-[#fe9da0] drop-shadow-md">
+            Producto que deseas agregar:
+        </label>
+        <div class="flex w-full sm:w-auto gap-2">
+            <input type="text" id="producto-input" placeholder="Ejemplo: Pan" 
+                   class="p-2 grow text-lg border-2 border-[#fe9da0] rounded-md bg-white w-full sm:w-64">
+            <button onclick="agregar()" 
+                    class="bg-[#fe9da0] text-white text-lg rounded-md p-2 px-4 whitespace-nowrap cursor-pointer hover:opacity-90 active:scale-95 transition-all">
+                Agregar
+            </button>
+        </div>
+    </div>
+
+    <div class="w-full max-w-[900px] flex flex-col items-center gap-4">
+        <div id="list" class="border-2 border-[#fe9da0] rounded-md w-full h-[40vh] sm:h-[50vh] p-4 bg-white/90 overflow-y-auto text-center">
+        </div>
+
+        <div class="flex flex-col sm:flex-row w-full gap-2 justify-center">
+            <input type="number" id="pos-input" placeholder="Número producto que deseas eliminar..." 
+                   class="p-2 text-lg border-2 border-[#fe9da0] rounded-md bg-white w-full sm:w-2/3">
+            <button onclick="eliminarPorPosicion()" 
+                    class="bg-[#fe9da0] text-white text-lg rounded-md p-2 px-4 whitespace-nowrap cursor-pointer hover:opacity-90 active:scale-95 transition-all">
+                Eliminar producto de la lista
+            </button>
+        </div>
+    </div>
+
+    <div id="mensaje" class="my-3 text-center"></div>
+
+    <ul id="lista-productos" class="w-full max-w-[900px] list-disc pl-5 text-white"></ul>
+
+    <button onclick="vaciarCarrito()" 
+            class="mt-4 bg-red-400 text-white text-lg rounded-md p-2 px-6 cursor-pointer hover:bg-red-500 active:scale-95 transition-all">
+        Vaciar el carrito
+    </button>
+
+    <script src="./js/app.js"></script>
+</body>
+</html>
